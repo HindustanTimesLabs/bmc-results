@@ -1,0 +1,31 @@
+{
+  "name": "bmc-election-results",
+  "version": "1.0.0",
+  "description": "mumbai",
+  "main": "webpack.config.js",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "scripts": {
+    "dev": "webpack --watch",
+    "build": "webpack -p"
+  },
+  "author": "hindustantimeslabs",
+  "license": "",
+  "dependencies": {
+    "d3": "^4.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "jquery": "^3.1.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-touch-punch": "^0.2.3",
+    "topojson": "^2.2.0",
+    "underscore": "^1.8.3",
+    "webpack": "^1.12.14"
+  }
+}
