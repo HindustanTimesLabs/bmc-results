@@ -2,11 +2,22 @@ require("../css/styles.scss")
 var width = $("#map").width(), height = $("#map").height();
 
 var projection = d3.geoMercator();
+
+var cc = {
+  "red": "#fc8d62",
+  "orange": "#fdb462",
+  "yellow": "#ffd92f",
+  "green": "#66c2a5",
+  "blue": "#80b1d3",
+  "violet": "#e78ac3",
+  "grey": "#ccc"
+}
+
 var colors = {
   "Shiv Sena" : cc.red,
-  "Indian National Congress" : cc.green,
-  "MNS" : cc.orange,
-  "Bhartiya Janata Party" : cc.blue
+  "Bharatiya Janata Party" : cc.orange,
+  "Indian National Congress" :cc.blue,
+  "Nationalist Congress Party" : cc.green
 };
 
 var path = d3.geoPath()
@@ -136,14 +147,14 @@ function drawTip(data){
     var w = _.where(data, {id: ac.toString()})[0];
     var c = Object.keys(colors).indexOf(w.party);
 
-    $(".tip").append("<div class='name'>Ward no. " + w.id +"</div>");
+    $(".tip").append("<div class='name'>Ward No. " + w.id +"</div>");
     $(".tip").append("<table></table>");
     $(".tip table").append("<tr class='party'></tr>");
     $(".tip table .party").append("<td>Party</td>");
-    $(".tip table .party").append("<td><div class='swatch' style='background:" + (c == -1 ? cc.grey : colors[w.party]) + "'></div><div class='party-name'>" + w.party + "</div></td>");
+    $(".tip table .party").append("<td><div class='swatch' style='background:" + (c == -1 ? cc.grey : colors[w.party]) + "'></div><div class='party-name'>" + toTitleCase(w.party) + "</div></td>");
     $(".tip table").append("<tr class='candidate'></tr>");
     $(".tip table .candidate").append("<td>Candidate</td>");
-    $(".tip table .candidate").append("<td>" + w.name + "</td>");
+    $(".tip table .candidate").append("<td>" + toTitleCase(w.name) + "</td>");
 
   }
 
@@ -176,6 +187,8 @@ function drawTip(data){
 
   }
 }
+
+
 
 var centered,
   z = 1;
@@ -292,4 +305,9 @@ function clicked(d){
         .on("click", clicked);
   }
 
+}
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
