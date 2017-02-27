@@ -148,6 +148,8 @@ function drawTip(data){
     var c = Object.keys(colors).indexOf(w.party);
 
     $(".tip").append("<div class='name'>Ward No. " + w.id +"</div>");
+    $(".tip").append("<div class='small-name'>"+w.areas +"</div>");
+
     $(".tip").append("<table></table>");
     $(".tip table").append("<tr class='party'></tr>");
     $(".tip table .party").append("<td>Party</td>");
